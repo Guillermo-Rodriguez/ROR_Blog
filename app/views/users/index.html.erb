@@ -1,0 +1,32 @@
+<style type="text/css">
+	.link{
+		color: #ffff;
+	}
+</style>
+<div class="container mt-5">
+	<a href="<%= newUser_path %>"><button class="btn btn-info">Nuevo</button></a>
+	<table class="table table-hover table-stripped mt-5">
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Email</td>
+				<td>Fecha de Creación</td>
+				<td>Show</td>
+				<td>Edit</td>
+				<td>Destroy</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @usuarios.each do |usuario|%>
+			<tr>
+				<td>Generic</td>
+				<td><%=usuario.email%></td>
+				<td><%=usuario.created_at%></td>
+				<td><button class="btn btn-info"><%= link_to "SHOW", showUser_path(usuario.id_user), :class=>"link" %></button></td>
+				<td><button class="btn btn-secondary"><%= link_to "EDIT", editUser_path(usuario.id_user), :class=>"link" %></button></td>
+				<td><button class="btn btn-danger"><%= link_to "DELETE", deleteUser_path(usuario.id_user), :class=>"link", method: :delete, data: { confirm: "¿Estás seguro de eliminar este Usuario?" } %></button></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

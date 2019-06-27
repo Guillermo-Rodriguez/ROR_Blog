@@ -1,0 +1,34 @@
+<style type="text/css">
+	a{
+		color: #ffff;
+		text-decoration: none;
+	}
+	a:hover{
+		color: #ffff;
+		text-decoration: none;
+	}
+	
+</style>
+<div class="container mt-5">
+	<a href="<%= newCategoria_path %>"><button class="btn btn-info">New Category</button></a>
+	<table class="table table-hover table-stripped mt-5">
+		<thead>
+			<tr>
+				<td>Categoria</td>
+				<td>Fecha de Creación</td>
+				<td>Edit</td>
+				<td>Destroy</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @categorias.each do |categoria|%>
+			<tr>
+				<td><%=categoria.nombre_categoria%></td>
+				<td><%=categoria.created_at%></td>
+				<td><button class="btn btn-secondary"><%= link_to "EDIT", editCategoria_path(categoria.id_categoria), :class=>"link" %></button></td>
+				<td><button class="btn btn-danger"><%= link_to "DELETE", deleteCategoria_path(categoria.id_categoria), :class=>"link", method: :delete, data: { confirm: "¿Estás seguro de eliminar esta Categoria?" } %></button></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

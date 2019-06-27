@@ -1,0 +1,45 @@
+<style type="text/css">
+	a{
+		color: #ffff;
+		text-decoration: none;
+	}
+	a:hover{
+		color: #ffff;
+		text-decoration: none;
+	}
+</style>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card mt-3">
+				<div class="card-body">
+					<% @blogs.each do |blog| %>
+					<div class="card mt-3">
+						<div class="card-body">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+									<%= image_tag blog.picture.thumb.url, :class=>'figure-img img-fluid rounded' %>
+											
+									</div>
+									<div class="col-md-6">
+										Title: <%= blog.titulo %><br>	
+										Categoria: <%= blog.categoria_id %><br>	
+										Usuario: <%= blog.user_id %><br>	
+									</div>
+									<div class="col-md-12">
+										Contenido: <%= blog.contenido %><br>										
+									</div>
+									<div class="col-md-4 mx-auto">
+										<button class="btn btn-secondary btn-sm mt-3"><%= link_to "Comentarios", showBlog_path(blog.id), :class=>"link" %></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<%end%>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

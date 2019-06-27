@@ -1,0 +1,42 @@
+<style type="text/css">
+	a{
+		color: #ffff;
+		text-decoration: none;
+	}
+	a:hover{
+		color: #ffff;
+		text-decoration: none;
+	}
+	
+</style>
+<div class="container mt-5">
+	<a href="<%= newBlog_path %>"><button class="btn btn-info">Add Blog</button></a>
+	<table class="table table-hover table-stripped mt-5">
+		<thead>
+			<tr>
+				<td>Titulo</td>
+				<td>Portada</td>
+				<td>Categoria</td>
+				<td>Usuario</td>
+				<td>Fecha de Creación</td>
+				<td>Show</td>
+				<td>Edit</td>
+				<td>Destroy</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @blogs.each do |blog|%>
+			<tr>
+				<td><%=blog.titulo%></td>
+				<td><%= image_tag blog.picture.small.url, :class=>'figure-img img-fluid img-sm rounded' %></td>
+				<td><%=blog.categoria_id%></td>
+				<td><%=blog.user_id%></td>
+				<td><%=blog.created_at%></td>
+				<td><button class="btn btn-info"><%= link_to "SHOW", showBlogAdmin_path(blog.id), :class=>"link" %></button></td>
+				<td><button class="btn btn-secondary"><%= link_to "EDIT", editBlog_path(blog.id), :class=>"link" %></button></td>
+				<td><button class="btn btn-danger"><%= link_to "DELETE", deleteBlog_path(blog.id), :class=>"link", method: :delete, data: { confirm: "¿Estás seguro de eliminar este Blog?" } %></button></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

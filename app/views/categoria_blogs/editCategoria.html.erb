@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="container">
+          <%= form_for @categoria, url: updateCategoria_path do |f| %>
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.label :nombre_categoria %>
+              <%= f.text_field :nombre_categoria, :class =>"form-control" %>
+            </div>
+
+            <div class="col-md-12">
+              <%= f.submit :class => "btn btn-block btn-info mt-4" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

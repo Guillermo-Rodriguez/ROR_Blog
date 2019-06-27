@@ -1,0 +1,92 @@
+<style type="text/css">
+	a{
+		color: #ffff;
+		text-decoration: none;
+	}
+	a:hover{
+		color: #ffff;
+		text-decoration: none;
+	}
+</style>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="card">
+						<div class="card-body">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+									<%= image_tag @blog.picture.thumb.url, :class=>'figure-img img-fluid rounded' %></div>
+									<div class="col-md-6">
+										Titulo: <%= @blog.titulo %><br>	
+										Categoria: <%= @blog.categoria_id %><br>	
+										Usuario: <%= @blog.user_id %><br>	
+									</div>
+									<div class="col-md-12">
+										Contenido: <%= @blog.contenido %><br>										
+									</div>
+									<div class="col-md-12 text-right">
+										<button class="btn btn-secondary btn-sm"><%= link_to "Back", public_path %></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<% @comentarios.each do |coment| %>
+					<div class="card mt-2">
+						<div class="card-body">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+										<span class="badge badge-success"><%= coment.nombre%></span>
+									</div>
+									<div class="col-md-6">
+										<span class="badge badge-info"><%= coment.email%></span>
+									</div>
+									<div class="col-md-12">
+										<%= coment.comentario%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<%end%>
+
+					<div class="card mt-5">
+						<div class="card-body">
+							<div class="container">
+								<%= form_for @comentario, url: addComentario_path do |f| %>
+								<div class="row">
+									<div class="col-md-6">
+										<%= f.label :nombre %><br/>
+										<%= f.text_field :nombre, autofocus: true, autocomplete: "Nombre", :class =>"form-control input-sm" %>
+									</div>
+									<div class="col-md-6">
+										<%= f.label :email %><br/>
+										<%= f.text_field :email, autofocus: true, autocomplete: "Email", :class =>"form-control input-sm" %>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<%= f.label :comentario %><br/>
+										<%= f.text_area :comentario, autofocus: true, autocomplete: "Comentario", :class =>"form-control input-sm" %>
+										<%= f.hidden_field :id_blog, value: @blog.id_blog, :class =>"form-control input-sm" %>
+									</div>
+									<div class="col-md-6">
+										<%= f.submit "Comentar", :class =>"btn btn-block btn-info mt-5 btn-sm" %>
+									</div>
+								</div>
+								<% end %>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

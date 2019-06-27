@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <div class="row mt-5">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <div class="container">
+            <h2 align="center">Edit Blog</h2>
+
+            <%= form_for @blog, url: updateBlog_path do |f| %>
+
+            <div class="field">
+              <%= f.label :titulo %><br />
+              <%= f.text_field :titulo, autofocus: true, autocomplete: "titulo", :class =>"form-control" , :required =>"on"%>
+            </div>
+
+            <div class="field">
+              <%= f.label :portada %><br />
+              <%= f.text_field :portada, autofocus: true, autocomplete: "portada", :class =>"form-control" , :required =>"on"%>
+            </div>
+
+            <div class="field">
+              <%= f.label :contenido %><br />
+              <%= f.text_area :contenido, autofocus: true, autocomplete: "contenido", :class =>"form-control" , :required =>"on"%>
+            </div>
+
+            <div class="field">
+              <%= f.label :categoria %><br />
+              <%= f.select(:categoria_id, categorias_for_select,{include_blank: "Seleccione Categoria"}, :class =>"form-control"  ) %>
+              <%= f.hidden_field  :user_id,  value: @currentUser%>
+
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Update", :class =>"btn btn-block btn-info mt-4" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
